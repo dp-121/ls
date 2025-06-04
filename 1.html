@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lotus Silk Extracting Machine | Innovation in Sustainable Textiles</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #ffd700;
+            transform: translateY(-2px);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #ffd700;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        main {
+            margin-top: 80px;
+        }
+
+        .section {
+            min-height: 100vh;
+            padding: 4rem 0;
+            display: flex;
+            align-items: center;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .hero {
+            text-align: center;
+            color: white;
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3));
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+            animation: fadeInUp 1.5s ease;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: fadeInUp 1.5s ease 0.3s both;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: linear-gradient(45deg, #ffd700, #ffed4e);
+            color: #333;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
+            animation: fadeInUp 1.5s ease 0.6s both;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(255, 215, 0, 0.5);
+        }
+
+        .content-section {
+            background: white;
+            border-radius: 20px;
+            margin: 2rem 0;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .section-header {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-header::before {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: #ffd700;
+            border-radius: 2px;
+        }
+
+        .section-header h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-content {
+            padding: 4rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin: 3rem 0;
+        }
+
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 1px solid #e0e0e0;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+        }
+
+        .card h3 {
+            color: #667eea;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin: 2rem 0;
+        }
+
+        .feature-list li {
+            padding: 1rem;
+            margin: 0.5rem 0;
+            background: #f8f9ff;
+            border-left: 4px solid #667eea;
+            border-radius: 0 10px 10px 0;
+            transition: all 0.3s ease;
+        }
+
+        .feature-list li:hover {
+            background: #e8eaff;
+            transform: translateX(10px);
+        }
+
+        .progress-bar {
+            background: #e0e0e0;
+            border-radius: 20px;
+            overflow: hidden;
+            margin: 1rem 0;
+        }
+
+        .progress-fill {
+            height: 30px;
+            background: linear-gradient(90deg, #667eea, #ffd700);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            transition: width 2s ease;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .team-member {
+            text-align: center;
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px);
+        }
+
+        .member-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            font-weight: bold;
+        }
+
+        .research-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .stat-card {
+            text-align: center;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .mobile-menu span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background: rgba(102, 126, 234, 0.95);
+                backdrop-filter: blur(10px);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1rem;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .section-content {
+                padding: 2rem;
+            }
+        }
+
+        .floating-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .floating-element {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-elements">
+        <div class="floating-element" style="width: 100px; height: 100px; top: 10%; left: 10%; animation-delay: 0s;"></div>
+        <div class="floating-element" style="width: 60px; height: 60px; top: 20%; right: 10%; animation-delay: 2s;"></div>
+        <div class="floating-element" style="width: 80px; height: 80px; bottom: 20%; left: 20%; animation-delay: 4s;"></div>
+        <div class="floating-element" style="width: 120px; height: 120px; bottom: 10%; right: 20%; animation-delay: 1s;"></div>
+    </div>
+
+    <header>
+        <nav class="container">
+            <div class="logo">🪷 Lotus Silk Tech</div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" onclick="scrollToSection('home')">Home</a></li>
+                <li><a href="#overview" onclick="scrollToSection('overview')">Overview</a></li>
+                <li><a href="#progress" onclick="scrollToSection('progress')">Progress</a></li>
+                <li><a href="#accessories" onclick="scrollToSection('accessories')">Accessories</a></li>
+                <li><a href="#team" onclick="scrollToSection('team')">Team</a></li>
+                <li><a href="#research" onclick="scrollToSection('research')">Research</a></li>
+            </ul>
+            <div class="mobile-menu" onclick="toggleMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="section hero visible">
+            <div class="container">
+                <h1>Lotus Silk Extracting Machine</h1>
+                <p>Revolutionizing sustainable textile production through innovative lotus fiber extraction technology</p>
+                <a href="#overview" class="cta-button" onclick="scrollToSection('overview')">Explore Innovation</a>
+            </div>
+        </section>
+
+        <!-- Overview Section -->
+        <section id="overview" class="section">
+            <div class="container">
+                <div class="content-section">
+                    <div class="section-header">
+                        <h2>Machine Overview</h2>
+                        <p>Cutting-edge technology for sustainable lotus silk production</p>
+                    </div>
+                    <div class="section-content">
+                        <div class="grid">
+                            <div class="card">
+                                <h3>🌱 Sustainable Process</h3>
+                                <p>Our machine extracts lotus silk fibers using eco-friendly methods that preserve the natural properties of the lotus plant while minimizing environmental impact.</p>
+                            </div>
+                            <div class="card">
+                                <h3>⚙️ Advanced Mechanics</h3>
+                                <p>Precision-engineered extraction mechanisms ensure optimal fiber quality while maintaining the delicate structure of lotus stems and leaves.</p>
+                            </div>
+                            <div class="card">
+                                <h3>📊 Smart Monitoring</h3>
+                                <p>Integrated sensors and control systems monitor extraction parameters in real-time, ensuring consistent quality and maximum yield.</p>
+                            </div>
+                        </div>
+                        
+                        <h3>Key Functionality</h3>
+                        <ul class="feature-list">
+                            <li><strong>Automated Fiber Extraction:</strong> Streamlined process for extracting high-quality lotus silk fibers</li>
+                            <li><strong>Quality Control Systems:</strong> Real-time monitoring of fiber quality and consistency</li>
+                            <li><strong>Waste Minimization:</strong> Efficient processing that reduces material waste by 75%</li>
+                            <li><strong>Energy Efficiency:</strong> Low-power operation with renewable energy compatibility</li>
+                            <li><strong>Scalable Design:</strong> Modular architecture allowing for production scaling</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Progress Section -->
+        <section id="progress" class="section">
+            <div class="container">
+                <div class="content-section">
+                    <div class="section-header">
+                        <h2>Development Progress</h2>
+                        <p>Tracking our journey from concept to implementation</p>
+                    </div>
+                    <div class="section-content">
+                        <div class="grid">
+                            <div class="card">
+                                <h3>Phase 1: Research & Design</h3>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 100%;">Completed</div>
+                                </div>
+                                <p>Comprehensive research on lotus fiber properties, market analysis, and initial design concepts completed successfully.</p>
+                            </div>
+                            <div class="card">
+                                <h3>Phase 2: Prototype Development</h3>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 85%;">85% Complete</div>
+                                </div>
+                                <p>Working prototype with core extraction functionality. Currently optimizing efficiency and fiber quality output.</p>
+                            </div>
+                            <div class="card">
+                                <h3>Phase 3: Testing & Optimization</h3>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 65%;">65% Complete</div>
+                                </div>
+                                <p>Extensive testing of fiber quality, machine reliability, and process optimization across various operating conditions.</p>
+                            </div>
+                        </div>
+
+                        <h3>Recent Achievements</h3>
+                        <ul class="feature-list">
+                            <li><strong>Fiber Quality Breakthrough:</strong> Achieved 40% improvement in fiber strength and consistency</li>
+                            <li><strong>Efficiency Milestone:</strong> Reduced extraction time by 60% compared to traditional methods</li>
+                            <li><strong>Sustainability Target:</strong> Met zero-waste processing goal for organic byproducts</li>
+                            <li><strong>Patent Application:</strong> Filed for innovative extraction mechanism design</li>
+                            <li><strong>Industry Recognition:</strong> Selected for sustainable innovation showcase</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Accessories Section -->
+        <section id="accessories" class="section">
+            <div class="container">
+                <div class="content-section">
+                    <div class="section-header">
+                        <h2>Machine Accessories</h2>
+                        <p>Comprehensive toolkit for optimal lotus silk extraction</p>
+                    </div>
+                    <div class="section-content">
+                        <div class="grid">
+                            <div class="card">
+                                <h3>🔧 Precision Cutting Tools</h3>
+                                <p>Specialized blades designed for clean lotus stem cutting without damaging fiber structure. Made from high-grade stainless steel for durability.</p>
+                            </div>
+                            <div class="card">
+                                <h3>📏 Fiber Measurement System</h3>
+                                <p>Advanced measurement tools for real-time fiber length and thickness analysis, ensuring consistent quality standards.</p>
+                            </div>
+                            <div class="card">
+                                <h3>🧪 Quality Testing Kit</h3>
+                                <p>Complete laboratory setup for testing fiber strength, elasticity, and purity levels according to international textile standards.</p>
+                            </div>
+                            <div class="card">
+                                <h3>💧 Cleaning & Maintenance Set</h3>
+                                <p>Specialized cleaning solutions and tools designed specifically for lotus silk extraction equipment maintenance.</p>
+                            </div>
+                            <div class="card">
+                                <h3>📱 Digital Control Interface</h3>
+                                <p>Smart control panel with touchscreen interface for monitoring extraction parameters and machine diagnostics.</p>
+                            </div>
+                            <div class="card">
+                                <h3>📦 Fiber Storage Solutions</h3>
+                                <p>Climate-controlled storage containers that preserve fiber quality during post-extraction processing and transportation.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team Section -->
+        <section id="team" class="section">
+            <div class="container">
+                <div class="content-section">
+                    <div class="section-header">
+                        <h2>Our Team</h2>
+                        <p>Meet the innovators behind the lotus silk revolution</p>
+                    </div>
+                    <div class="section-content">
+                        <div class="team-grid">
+                            <div class="team-member">
+                                <div class="member-photo">AK</div>
+                                <h3>Anuj kirti</h3>
+                                <p><strong>Lead Engineer</strong></p>
+                                <p>15+ years in mechanical engineering and sustainable technology development. PhD in Advanced Manufacturing Systems.</p>
+                            </div>
+                            <div class="team-member">
+                                <div class="member-photo">BD</div>
+                                <h3>Bhumi dwivedi</h3>
+                                <p><strong>Textile Specialist</strong></p>
+                                <p>Expert in natural fiber processing with extensive research in lotus silk properties and applications.</p>
+                            </div>
+                            <div class="team-member">
+                                <div class="member-photo">MK</div>
+                                <h3>Manjot Kaur</h3>
+                                <p><strong>Software Developer</strong></p>
+                                <p>Specialized in IoT systems and machine learning applications for industrial automation and quality control.</p>
+                            </div>
+                            <div class="team-member">
+                                <div class="member-photo">SC</div>
+                                <h3>Samiksha Chintapanta</h3>
+                                <p><strong>Research Director</strong></p>
+                                <p>Leading researcher in sustainable textiles with 20+ publications on eco-friendly manufacturing processes.</p>
+                            </div>
+                            <div class="team-member">
+                                <div class="member-photo">ET</div>
+                                <h3>Eshan Thakur</h3>
+                                <p><strong>Quality Assurance</strong></p>
+                                <p>Quality control expert ensuring all products meet international standards for textile manufacturing.</p>
+                            </div>
+                            <div class="team-member">
+                                <div class="member-photo">AK</div>
+                                <h3>Anuj kirti</h3>
+                                <p><strong>Project Manager</strong></p>
+                                <p>Experienced project manager coordinating cross-functional teams and ensuring timely delivery of milestones.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Research Section -->
+        <section id="research" class="section">
+            <div class="container">
+                <div class="content-section">
+                    <div class="section-header">
+                        <h2>Research & Findings</h2>
+                        <p>Scientific foundation driving our innovation</p>
+                    </div>
+                    <div class="section-content">
+                        <div class="research-stats">
+                            <div class="stat-card">
+                                <span class="stat-number">150+</span>
+                                <span>Research Hours</span>
+                            </div>
+                            <div class="stat-card">
+                                <span class="stat-number">25</span>
+                                <span>Scientific Papers</span>
+                            </div>
+                            <div class="stat-card">
+                                <span class="stat-number">5</span>
+                                <span>Patents Filed</span>
+                            </div>
+                            <div class="stat-card">
+                                <span class="stat-number">85%</span>
+                                <span>Efficiency Gain</span>
+                            </div>
+                        </div>
+
+                        <div class="grid">
+                            <div class="card">
+                                <h3>🔬 Fiber Analysis Studies</h3>
+                                <p>Comprehensive analysis of lotus fiber properties including tensile strength, elasticity, and biodegradability. Our research shows lotus silk fibers are 3x stronger than conventional cotton fibers.</p>
+                            </div>
+                            <div class="card">
+                                <h3>🌍 Environmental Impact Assessment</h3>
+                                <p>Life cycle analysis demonstrating 70% reduction in water usage and 60% lower carbon footprint compared to traditional silk production methods.</p>
+                            </div>
+                            <div class="card">
+                                <h3>⚗️ Extraction Methodology</h3>
+                                <p>Development of proprietary extraction techniques that preserve fiber integrity while maximizing yield. Our method achieves 95% fiber recovery rate.</p>
+                            </div>
+                            <div class="card">
+                                <h3>📈 Market Research</h3>
+                                <p>Analysis of sustainable textile market trends showing 40% annual growth in demand for eco-friendly fabric alternatives in luxury markets.</p>
+                            </div>
+                            <div class="card">
+                                <h3>🧬 Biochemical Properties</h3>
+                                <p>Investigation of natural antibacterial and UV-resistant properties of lotus silk, making it ideal for high-performance textile applications.</p>
+                            </div>
+                            <div class="card">
+                                <h3>🏭 Scalability Analysis</h3>
+                                <p>Feasibility studies for commercial-scale production, including cost-benefit analysis and supply chain optimization strategies.</p>
+                            </div>
+                        </div>
+
+                        <h3>Key Research Findings</h3>
+                        <ul class="feature-list">
+                            <li><strong>Superior Fiber Properties:</strong> Lotus silk exhibits exceptional strength-to-weight ratio and natural breathability</li>
+                            <li><strong>Sustainable Production:</strong> 90% less water consumption compared to conventional silk production</li>
+                            <li><strong>Economic Viability:</strong> Production costs 30% lower than traditional silk while maintaining premium quality</li>
+                            <li><strong>Zero Waste Process:</strong> All byproducts can be utilized for biofuel or organic fertilizer production</li>
+                            <li><strong>Scalable Technology:</strong> Machine design allows for easy scaling from small-scale to industrial production</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Smooth scrolling functionality
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            const headerHeight = 80;
+            const elementPosition = element.offsetTop;
+            const offsetPosition = elementPosition - headerHeight;
+
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+            });
+        }
+
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('.section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Header background change on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(102, 126, 234, 0.95)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.1)';
+            }
+        });
+
+        // Animate progress bars when visible
+        const progressObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const progressFills = entry.target.querySelectorAll('.progress-fill');
+                    progressFills.forEach(fill => {
+                        const width = fill.style.width;
+                        fill.style.width = '0%';
+                        setTimeout(() => {
+                            fill.style.width = width;
+                        }, 500);
+                    });
+                }
+            });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll('#progress .section-content').forEach(section => {
+            progressObserver.observe(section);
+        });
+
+        // Add dynamic floating elements
+        function createFloatingElement() {
+            const element = document.createElement('div');
+            element.className = 'floating-element';
+            element.style.width = Math.random() * 60 + 40 + 'px';
+            element.style.height = element.style.width;
+            element.style.left = Math.random() * 100 + '%';
+            element.style.top = Math.random() * 100 + '%';
+            element.style.animationDelay = Math.random() * 6 + 's';
+            document.querySelector('.floating-elements').appendChild(element);
+
+            setTimeout(() => {
+                element.remove();
+            }, 12000);
+        }
+
+        // Create floating elements periodically
+        setInterval(createFloatingElement, 3000);
+    </script>
+</body>
+</html>
